@@ -1,0 +1,101 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "ToucheBold";
+}
+
+body {
+    background-image: url(Background.png);
+    background-size: cover;
+    color: white;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 0 10%;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.content {
+    width: 60%;
+}
+
+.logo {
+    width: 30%;
+}
+
+h1 {
+    font-size: 7vw;
+    font-weight: bold;
+    margin-bottom: 1vw;
+}
+
+img {
+    display: block;
+}
+
+.highlight {
+    color: #4d9ed6;
+}
+
+h2 {
+    font-size: 4vw;
+    margin-bottom: 2vw;
+}
+
+.quote {
+    font-family: "ToucheMediumItalic";
+    font-size: 1.5vw;
+    margin-bottom: 3vw;
+    line-height: 1.4;
+}
+
+.socials {
+    display: flex;
+    align-items: center;
+}
+
+.social-item {
+    display: flex;
+    align-items: center;
+    margin-right: 2vw;
+}
+
+.social-icon {
+    background-color: #4d9ed6;
+    padding-right: 0vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.username {
+    font-size: 1.2vw;
+    font-family: "ToucheMedium";
+}
+
+@font-face {
+    font-family: "ToucheBold";
+    src: url(Touche-Bold-BF642a2ec04a3ad.otf);
+}
+
+@font-face {
+    font-family: "ToucheMedium";
+    src: url(Touche-Medium-BF642a2ebfeab7c.otf)
+}
+
+@font-face {
+    font-family: "ToucheMediumItalic";
+    src: url(Touche-MediumItalic-BF642a2ec043436.otf)
+}
+
+@font-face {
+    font-family: "ToucheLightItalic";
+    src: url(Touche-LightItalic-BF642a2ec047438.otf)
+}

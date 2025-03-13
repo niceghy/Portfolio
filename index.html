@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>Nice - Full-Stack LUAU Developer</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <h1 class="title" style="margin-bottom: 2.5vw;"><nobr>Meet <span class="highlight">Nice</span></nobr>,</h1>
+            <h2 class="description" style="margin-bottom:3vw;">A <span class="highlight">Full-Stack</span><br><nobr><span class="highlight">LUAU</span> Developer</nobr></h2>
+            <p class="quote"></nobr></p>
+            
+            <div class="socials">
+                <div class="social-item">
+                    <img src="Roblox.png" width="65vw" class="social-item">
+                    <span class="username">@niceghy</span>
+                </div>
+                <div class="social-item">
+                    <img src="Discord.png" width="70vw" class="social-item">
+                    <span class="username">@ncgy</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <img src="Forum.png" width="600vw">
+    </div>
+
+    <script>
+        function typewriter(element, text, i = 0){
+            element.textContent += text[i]
+
+            if (i === text.length - 1) {
+                return;
+            }
+            
+            setTimeout(() => typewriter(element, text, i + 1), 50);
+        }
+        
+        typewriter(document.querySelector(".quote"), '"Let me tackle the challenges so you can focus on your vision"')
+    </script>
+</body>
+</html>
