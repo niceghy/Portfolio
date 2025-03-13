@@ -34,17 +34,52 @@
     </div>
 
     <script>
+        document.querySelector('.socials').style.opacity = 0
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const elements = [
+                document.querySelector('.title'),
+                document.querySelector('.description'),
+                document.querySelector('.quote'),
+            ];
+            
+            elements.forEach((element, index) => {
+                element.style.opacity = '0';
+                setTimeout(() => {
+                    element.style.transition = 'opacity 0.8s ease-in-out';
+                    element.style.opacity = '1';
+                }, 300 * index);
+            });
+        });
+
         function typewriter(element, text, i = 0){
             element.textContent += text[i]
 
             if (i === text.length - 1) {
+                // Typewriter is complete, now fade in the socials
+                fadeInSocials();
                 return;
             }
             
             setTimeout(() => typewriter(element, text, i + 1), 50);
         }
-        
-        typewriter(document.querySelector(".quote"), '"Let me tackle the challenges so you can focus on your vision"')
+
+            function fadeInSocials() {
+                const socials = document.querySelector('.socials');
+                socials.style.opacity = 0; // Make sure it starts invisible
+                socials.style.transition = 'opacity 1.5s ease-in-out'; // Add a smooth CSS transition
+                
+                // Small delay before starting the fade
+                setTimeout(() => {
+                    socials.style.opacity = 1; // Simply set to fully visible and let CSS handle the animation
+                }, 300);
+            }
+
+            // Set initial opacity to 0
+            document.querySelector('.socials').style.opacity = 0;
+
+            // Start the typewriter
+            typewriter(document.querySelector(".quote"), '"Let me tackle the challenges so you can focus on your vision"');
     </script>
 </body>
 </html>
