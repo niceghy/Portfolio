@@ -177,18 +177,20 @@ body {
     }
 }
 
-/* For very small screens */
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 768px) {
     .title {
-        font-size: 14vw;
+      margin-bottom: 2vh; /* Use viewport height instead of vw */
     }
-
+    
     .description {
-        font-size: 10vw;
+      margin-bottom: 2vh;
     }
-
+    
     .quote {
-        font-size: 4vw;
-        min-height: 12vw;
+      margin-bottom: 2vh;
     }
-}
+    
+    body {
+      padding: 2vh 5%;
+    }
+  }
