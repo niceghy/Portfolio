@@ -4,83 +4,92 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="styles.css">
-    <link rel="icon" type="image/x-icon" href="Favicon.png">
-    <title>niceghy</title>
-    <style>
-        
-    </style>
+    <title>Nice - Full-Stack LUAU Developer</title>
 </head>
 <body>
     <div class="container">
         <div class="content">
-            <h1 class="title" style="margin-bottom: 2.5vw;"><nobr>Meet <span class="highlight">Nice</span></nobr>,</h1>
-            <h2 class="description" style="margin-bottom:3vw;">A <span class="highlight">Full-Stack</span><br><nobr><span class="highlight">LUAU</span> Developer</nobr></h2>
-            <p class="quote"></nobr></p>
+            <h1 class="title"><nobr>Meet <span class="highlight">Nice</span></nobr>,</h1>
+            <h2 class="description">A <span class="highlight">Full-Stack</span><br><nobr><span class="highlight">LUAU</span> Developer</nobr></h2>
+            <p class="quote"></p>
             
             <div class="socials">
                 <div class="social-item">
-                    <img src="Roblox.png" width="65vw" class="social-item">
+                    <img src="Roblox.png" class="social-icon">
                     <span class="username">@niceghy</span>
                 </div>
                 <div class="social-item">
-                    <img src="Discord.png" width="70vw" class="social-item">
+                    <img src="Discord.png" class="social-icon">
                     <span class="username">@ncgy</span>
                 </div>
             </div>
         </div>
-    </div>
-
-    <div>
-        <img src="Forum.png" width="600vw">
+        
+        <div class="forum-container">
+            <img src="Forum.png" class="forum-image">
+        </div>
     </div>
 
     <script>
-        document.querySelector('.socials').style.opacity = 0
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const elements = [
-                document.querySelector('.title'),
-                document.querySelector('.description'),
-                document.querySelector('.quote'),
-            ];
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get the quote element
+            const quoteElement = document.querySelector(".quote");
             
-            elements.forEach((element, index) => {
-                element.style.opacity = '0';
-                setTimeout(() => {
-                    element.style.transition = 'opacity 0.8s ease-in-out';
-                    element.style.opacity = '1';
-                }, 300 * index);
-            });
+            // Store the full quote
+            const fullQuote = '"Let me tackle the challenges so you can focus on your vision"';
+            
+            // Format the text with a line break
+            const formattedQuote = '"Let me tackle the challenges so you\ncan focus on your vision"';
+            
+            // Temporarily add the full text with line break to calculate its height
+            quoteElement.innerHTML = formattedQuote.replace('\n', '<br>');
+            
+            // Get the height of the element with full text
+            const fullHeight = quoteElement.offsetHeight;
+            
+            // Set this height as fixed
+            quoteElement.style.height = fullHeight + 'px';
+            
+            // Clear the text for the typewriter effect
+            quoteElement.textContent = '';
+            
+            // Now run the typewriter function with the formatted quote
+            typewriter(quoteElement, formattedQuote);
         });
 
-        function typewriter(element, text, i = 0){
-            element.textContent += text[i]
-
-            if (i === text.length - 1) {
-                // Typewriter is complete, now fade in the socials
+        function typewriter(element, text, i = 0) {
+            // Check if we've reached the end of the text
+            if (i >= text.length) {
                 fadeInSocials();
                 return;
+            }
+            
+            // Check if the current character is a newline
+            if (text[i] === '\n') {
+                element.innerHTML += '<br>';
+            } else {
+                element.innerHTML += text[i];
             }
             
             setTimeout(() => typewriter(element, text, i + 1), 50);
         }
 
-            function fadeInSocials() {
-                const socials = document.querySelector('.socials');
-                socials.style.opacity = 0; // Make sure it starts invisible
-                socials.style.transition = 'opacity 1.5s ease-in-out'; // Add a smooth CSS transition
-                
-                // Small delay before starting the fade
+        function fadeInSocials() {
+            const socials = document.querySelector('.socials');
+            socials.style.transition = 'opacity 1.5s ease-in-out';
+            
+            // Using requestAnimationFrame for better performance on mobile
+            requestAnimationFrame(() => {
                 setTimeout(() => {
-                    socials.style.opacity = 1; // Simply set to fully visible and let CSS handle the animation
+                    socials.style.opacity = 1;
                 }, 300);
-            }
+            });
+        }
 
-            // Set initial opacity to 0
-            document.querySelector('.socials').style.opacity = 0;
-
-            // Start the typewriter
-            typewriter(document.querySelector(".quote"), '"Let me tackle the challenges so you can focus on your vision"');
+        // Add touch event listeners for mobile
+        document.addEventListener('touchstart', function() {
+            // This ensures touch events are handled properly
+        }, {passive: true});
     </script>
 </body>
 </html>
