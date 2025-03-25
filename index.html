@@ -8,64 +8,97 @@
     <title>niceghy</title>
 </head>
 <body>
-    <div class="container">
-        <div class="content">
-            <h1 class="title"><nobr>Meet <span class="highlight">Nice</span></nobr>,</h1>
-            <h2 class="description">A <span class="highlight">Full-Stack</span><br><nobr><span class="highlight">LUAU</span> Developer</nobr></h2>
-            <p class="quote"></p>
-            
-            <div class="socials">
-                <div class="social-item">
-                    <img src="Roblox.png" class="social-icon">
-                    <span class="username">@niceghy</span>
+    <section id="hero" class="section">
+        <div class="container">
+            <div class="content">
+                <h1 class="title"><nobr>Meet <span class="highlight">Nice</span></nobr>,</h1>
+                <h2 class="description">A <span class="highlight">Full-Stack</span><br><nobr><span class="highlight">LUAU</span> Developer</nobr></h2>
+                <p class="quote"></p>
+                
+                <div class="socials">
+                    <div class="social-item">
+                        <img src="Roblox.png" class="social-icon">
+                        <span class="username">@niceghy</span>
+                    </div>
+                    <div class="social-item">
+                        <img src="Discord.png" class="social-icon">
+                        <span class="username">@ncgy</span>
+                    </div>
                 </div>
-                <div class="social-item">
-                    <img src="Discord.png" class="social-icon">
-                    <span class="username">@ncgy</span>
+            </div>
+            
+            <div class="forum-container">
+                <img src="Forum.png" class="forum-image">
+            </div>
+        </div>
+    </section>
+
+    <div class="scroll-indicator">
+        <div class="arrow-down"></div>
+    </div>
+
+    <section id="about" class="section">
+        <div class="container">
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">1</div>
+                    <h3>Professionalism</h3>
+                    <p>A collaborative, approachable developer who simplifies the process</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">2</div>
+                    <h3>Proven Experience</h3>
+                    <p>Five years of expertise, tailored to your vision</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">3</div>
+                    <h3>Flexibility</h3>
+                    <p>Offering customizability with payments to suit your needs</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">4</div>
+                    <h3>Quality Work</h3>
+                    <p>Driven to deliver high-quality commisions, in appropiate time</p>
                 </div>
             </div>
         </div>
-        
-        <div class="forum-container">
-            <img src="Forum.png" class="forum-image">
-        </div>
-    </div>
+    </section>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Get the quote element
+            // get the quote element
             const quoteElement = document.querySelector(".quote");
             
-            // Store the full quote
+            // store the full quote
             const fullQuote = '"Let me tackle the challenges so you can focus on your vision"';
             
-            // Format the text with a line break
+            // format the text with a line break
             const formattedQuote = '"Let me tackle the challenges so you\ncan focus on your vision"';
             
-            // Temporarily add the full text with line break to calculate its height
+            // temporarily add the full text with line break
             quoteElement.innerHTML = formattedQuote.replace('\n', '<br>');
             
-            // Get the height of the element with full text
+            // get the height of the element with full text
             const fullHeight = quoteElement.offsetHeight;
             
-            // Set this height as fixed
+            // set this height as fixed
             quoteElement.style.height = fullHeight + 'px';
             
-            // Clear the text for the typewriter effect
+            // clear the text for the typewriter effect
             quoteElement.textContent = '';
             
-            // Now run the typewriter function with the formatted quote
+            // run the typewriter function with the formatted quote
             typewriter(quoteElement, formattedQuote);
         });
 
         function typewriter(element, text, i = 0) {
-            // Check if we've reached the end of the text
+            // check end of text
             if (i >= text.length) {
                 fadeInSocials();
                 return;
             }
             
-            // Check if the current character is a newline
+            // check if the current character is a newline
             if (text[i] === '\n') {
                 element.innerHTML += '<br>';
             } else {
@@ -79,7 +112,6 @@
             const socials = document.querySelector('.socials');
             socials.style.transition = 'opacity 1.5s ease-in-out';
             
-            // Using requestAnimationFrame for better performance on mobile
             requestAnimationFrame(() => {
                 setTimeout(() => {
                     socials.style.opacity = 1;
@@ -87,10 +119,49 @@
             });
         }
 
-        // Add touch event listeners for mobile
         document.addEventListener('touchstart', function() {
-            // This ensures touch events are handled properly
+            
         }, {passive: true});
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const scrollIndicator = document.querySelector('.scroll-indicator');
+            const aboutSection = document.getElementById('about');
+            
+            scrollIndicator.addEventListener('click', function() {
+                aboutSection.scrollIntoView({ behavior: 'smooth' });
+            });
+            
+            const serviceCards = document.querySelectorAll('.service-card');
+            
+            function isInViewport(element) {
+                const rect = element.getBoundingClientRect();
+                return (
+                    rect.top >= 0 &&
+                    rect.left >= 0 &&
+                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                );
+            }
+            
+            function handleScrollAnimations() {
+                serviceCards.forEach(card => {
+                    if (isInViewport(card)) {
+                        card.style.opacity = 1;
+                        card.style.transform = 'translateY(0)';
+                    }
+                });
+            }
+            
+            serviceCards.forEach(card => {
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(50px)';
+                card.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            });
+            
+            window.addEventListener('scroll', handleScrollAnimations);
+            
+            handleScrollAnimations();
+        });
     </script>
 </body>
 </html>

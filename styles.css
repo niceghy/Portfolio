@@ -5,16 +5,21 @@
     font-family: "ToucheBold";
 }
 
-body {
-    background-image: url(Background.png);
-    background-size: cover;
-    color: white;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    padding: 0 10%;
+html {
+    scroll-behavior: smooth;
 }
 
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url(Background.png);
+    background-size: cover;
+    background-attachment: fixed;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* Container and Layout */
 .container {
     width: 100%;
     display: flex;
@@ -22,12 +27,16 @@ body {
     align-items: center;
 }
 
-.content {
-    width: 60%;
-    opacity: 0;
-    animation: fadeIn 1s ease-in-out forwards;
+.section {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 10%;
+    box-sizing: border-box;
 }
 
+/* Typography */
 .title {
     font-size: 7vw;
     font-weight: bold;
@@ -45,17 +54,6 @@ body {
     animation-delay: 0.6s;
 }
 
-.forum-container {
-    opacity: 0;
-    animation: fadeIn 1s ease-in-out forwards;
-    animation-delay: 1.2s;
-}
-
-.forum-image {
-    width: 100%;
-    max-width: 600px;
-}
-
 .highlight {
     color: #4d9ed6;
 }
@@ -71,6 +69,29 @@ body {
     animation-delay: 0.9s;
 }
 
+p {
+    font-family: "ToucheMedium";
+}
+
+/* Hero Section Elements */
+.content {
+    width: 60%;
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards;
+}
+
+.forum-container {
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards;
+    animation-delay: 1.2s;
+}
+
+.forum-image {
+    width: 100%;
+    max-width: 600px;
+}
+
+/* Social Media Section */
 .socials {
     display: flex;
     align-items: center;
@@ -100,6 +121,83 @@ body {
     margin-left: 0.5vw;
 }
 
+/* Scroll Indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+    animation: bounce 2s infinite;
+}
+
+.arrow-down {
+    width: 30px;
+    height: 30px;
+    border-right: 3px solid #4d9ed6;
+    border-bottom: 3px solid #4d9ed6;
+    transform: rotate(45deg);
+}
+
+/* About Section Elements */
+.section-title {
+    font-size: 4vw;
+    text-align: center;
+    margin-bottom: 7rem;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.service-card {
+    background: rgba(23, 55, 83, 0.7);
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.service-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.service-card h3 {
+    margin-bottom: 1rem;
+    color: #4d9ed6;
+}
+
+.cta-button {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.cta-button a {
+    display: inline-block;
+    background: #4d9ed6;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-family: "ToucheMedium";
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.cta-button a:hover {
+    background: #3a7ca5;
+    transform: scale(1.05);
+}
+
+/* Animations */
 @keyframes fadeIn {
     0% {
         opacity: 0;
@@ -111,6 +209,19 @@ body {
     }
 }
 
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-20px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Font Declarations */
 @font-face {
     font-family: "ToucheBold";
     src: url(Touche-Bold-BF642a2ec04a3ad.otf);
@@ -127,11 +238,16 @@ body {
 }
 
 @font-face {
+    font-family: "TouchLight";
+    src: url(Touche-Light-BF642a2ebf8fe16.otf)
+}
+
+@font-face {
     font-family: "ToucheLightItalic";
     src: url(Touche-LightItalic-BF642a2ec047438.otf)
 }
 
-/* Media queries for responsive design */
+/* Responsive Media Queries */
 @media screen and (max-width: 768px) {
     body {
         padding: 0 5%;
@@ -175,11 +291,9 @@ body {
         max-width: 500px;
         margin: 0 auto;
     }
-}
-
-@media screen and (max-width: 768px) {
+    
     .title {
-      margin-bottom: 2vh; /* Use viewport height instead of vw */
+      margin-bottom: 2vh;
     }
     
     .description {
@@ -193,4 +307,12 @@ body {
     body {
       padding: 2vh 5%;
     }
-  }
+    
+    .section-title {
+        font-size: 8vw;
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+}
