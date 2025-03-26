@@ -19,7 +19,6 @@ body {
     overflow-x: hidden;
 }
 
-/* Container and Layout */
 .container {
     width: 100%;
     display: flex;
@@ -36,7 +35,6 @@ body {
     box-sizing: border-box;
 }
 
-/* Typography */
 .title {
     font-size: 7vw;
     font-weight: bold;
@@ -73,7 +71,6 @@ p {
     font-family: "ToucheMedium";
 }
 
-/* Hero Section Elements */
 .content {
     width: 60%;
     opacity: 0;
@@ -91,7 +88,24 @@ p {
     max-width: 600px;
 }
 
-/* Social Media Section */
+.centerdiv {
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.title2 {
+    margin-bottom: 2vw; 
+    font-size:5vw; 
+    text-align:center
+}
+
+.subquote{
+    text-align:center; 
+    font-family: ToucheMediumItalic; 
+    font-size: 1.5vw;
+}
+
 .socials {
     display: flex;
     align-items: center;
@@ -139,7 +153,6 @@ p {
     transform: rotate(45deg);
 }
 
-/* About Section Elements */
 .section-title {
     font-size: 4vw;
     text-align: center;
@@ -151,6 +164,13 @@ p {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
     margin-bottom: 3rem;
+}
+
+.videodesc {
+    margin-top: 1vw;
+    text-align:center; 
+    font-family: ToucheMediumItalic; 
+    font-size: 0.8vw;
 }
 
 .service-card {
@@ -276,6 +296,10 @@ p {
     .quote {
         font-size: 3vw;
         min-height: 9vw;
+    }
+
+    .socials {
+        justify-content: center;
     }
 
     .socials {
